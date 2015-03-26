@@ -3,7 +3,6 @@
 # ------------------------
 
 nps_start() {
-	
 	exec /usr/bin/s6-svscan /usr/local/nps/etc/s6
 }
 
@@ -11,46 +10,34 @@ nps_start() {
 # NPS STOP
 # ------------------------
 
-nps_stop() {
-
-}
+nps_stop() {}
 
 # ------------------------
 # NPS RESTART
 # ------------------------
 
-nps_restart() {
-	
-}
+nps_restart() {}
 
 # ------------------------
 # NPS RELOAD
 # ------------------------
 
-nps_reload() {
-
-}
+nps_reload() {}
 
 # ------------------------
 # NPS STATUS
 # ------------------------
 
-nps_status() {
-	
-}
+nps_status() {}
 
 # ------------------------
 # NPS LOG
 # ------------------------
 
-nps_log() {
-
-}
+nps_log() {}
 
 # ------------------------
 # NPS LOGIN
 # ------------------------
 
-nps_login() {
-
-}
+nps_login() {}
