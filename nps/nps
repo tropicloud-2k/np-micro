@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# ------------------------------------
+# Tropicloud NP-STACK
+# ------------------------------------
+# @author: Guigo2k (hello@guigo.pw)
+# version: 0.3
+# ------------------------------------
+
+nps='/usr/local/nps' && home='/app'
+
+# ------------------------------------
+# NP-STACK Functions
+# ------------------------------------
+
+for f in $nps/bin/*; do . $f; done
+
+  if [[  $1 == 'setup'  ]];    then nps_setup $@
+elif [[  $1 == 'start'  ]];    then nps_start $@
+elif [[  $1 == 'stop'  ]];     then nps_stop $@
+elif [[  $1 == 'restart'  ]];  then nps_restart $@
+elif [[  $1 == 'reload'  ]];   then nps_reload $@
+elif [[  $1 == 'status'  ]];   then nps_status $@
+elif [[  $1 == 'log'  ]];      then nps_log $@
+elif [[  $1 == 'login'  ]];    then nps_login $@
+
+# ------------------------------------
+# NP-STACK Commands
+# ------------------------------------
+
+else echo "
+----------------------------------------------------
+  NP-STACK  - www.tropicloud.net
+----------------------------------------------------  
+
+  HOW TO USE:
+  
+  nps start                 # Start all processes
+  nps start <name>          # Start a specific process
+  nps stop                  # Stop all processes
+  nps stop <name>           # Stop a specific process
+  nps restart               # Restart all processes
+  nps restart <name>        # Restart a specific process
+  nps status                # Get status for all processes
+  nps status <name>         # Get status for a single process
+  nps log                   # Display last 1600 *bytes* of main log file
+  nps reload                # Restart Supervisord
+
+----------------------------------------------------  
+
+"
+fi
