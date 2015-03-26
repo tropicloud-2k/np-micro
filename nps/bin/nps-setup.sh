@@ -7,7 +7,7 @@ nps_setup() {
 	# ------------------------
 	
 	## Dependecies
-	apk-install curl cron openssl
+	apk-install curl wget cron openssl
 
 	## NGINX
 	apk-install nginx
@@ -21,11 +21,11 @@ nps_setup() {
                 php-mcrypt
 	               
 	## WP-CLI
-	curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/local/bin/wp
+	wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 	chmod +x /usr/local/bin/wp
 	
 	## JQ 
-	curl http://stedolan.github.io/jq/download/linux64/jq > /usr/local/bin/jq
+	wget -O /usr/local/bin/jq http://stedolan.github.io/jq/download/linux64/jq
 	chmod +x /usr/local/bin/jq
 	
 	# ------------------------
