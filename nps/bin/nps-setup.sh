@@ -1,4 +1,4 @@
-function nps_setup() {
+nps_setup() {
 
 	chmod +x /usr/local/nps/nps && ln -s /usr/local/nps/nps /usr/bin/nps
 
