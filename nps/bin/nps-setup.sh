@@ -1,5 +1,3 @@
-#!/bin/sh
-
 function nps_setup() {
 
 	chmod +x /usr/local/nps/nps && ln -s /usr/local/nps/nps /usr/bin/nps
