@@ -1,23 +1,23 @@
 #!/bin/sh
 
 if [[  ! -f "/var/log/nginx/error.log"  ]]; then 
-	sudo mkdir -p /var/log/nginx
-	sudo touch /var/log/nginx/error.log
-	sudo chown npuser:nginx -R /var/log/nginx
-	sudo chmod 775 -R /var/log/nginx
+	mkdir -p /var/log/nginx
+	touch /var/log/nginx/error.log
+	chown npuser:nginx -R /var/log/nginx
+	chmod 775 -R /var/log/nginx
 fi
 
 if [[  ! -f "/app/log/nginx/error.log"  ]]; then 
-	sudo mkdir -p /app/log/nginx
-	sudo touch /app/log/nginx/error.log
-	sudo chown npuser:nginx -R /app/*
-	sudo chmod 775 -R /app/*
+	mkdir -p /app/log/nginx
+	touch /app/log/nginx/error.log
+	chown npuser:nginx -R /app/*
+	chmod 775 -R /app/*
 fi
 
 if [[  ! -d "/tmp/nginx/client-body"  ]]; then
-	sudo mkdir -p /tmp/nginx/client-body
-	sudo chown npuser:nginx -R /tmp/nginx/client-body
-	sudo chmod 775 -R /tmp/nginx/client-body
+	mkdir -p /tmp/nginx/client-body
+	chown npuser:nginx -R /tmp/nginx/client-body
+	chmod 775 -R /tmp/nginx/client-body
 fi
 
-exec /usr/sbin/nginx -c /etc/nginx/nginx.conf
+exec su -l npuser -c "/usr/sbin/nginx -c /etc/nginx/nginx.conf"
