@@ -41,5 +41,11 @@ np_log() {}
 # ------------------------
 
 np_login() {
-	exec /bin/sh
+
+	if [[  $2 == 'root'  ]];
+	then /bin/sh
+	else su -l $user -s /bin/sh
+	fi
+	
+	
 }
