@@ -41,5 +41,5 @@ nps_log() {}
 # ------------------------
 
 nps_login() {
-	exec /bin/true
+	exec /bin/sh
 }

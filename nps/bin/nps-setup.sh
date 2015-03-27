@@ -6,20 +6,14 @@ nps_setup() {
 	# INSTALL
 	# ------------------------
 	
-	## Dependecies
-	apk-install curl openssl
-
 	## NGINX
-	apk-install nginx
+	apk-install nginx openssl
 	               
 	## PHP
 	apk-install php-fpm \
                 php-opcache \
-                php-mysql \
-                php-pgsql \
-                php-gd \
-                php-mcrypt
-
+                php-mysql
+                
 	# ------------------------
 	# CHROOT USER
 	# ------------------------
