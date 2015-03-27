@@ -2,7 +2,9 @@
 # NPS START
 # ------------------------
 
-nps_start() { exec /usr/bin/s6-svscan $nps/etc/services }
+nps_start() {
+	exec /usr/bin/s6-svscan $nps/etc/services
+}
 
 # ------------------------
 # NPS STOP
