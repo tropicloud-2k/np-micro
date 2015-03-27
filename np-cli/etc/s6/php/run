@@ -1,9 +1,8 @@
 #!/bin/sh
 
 if [[  ! -f "/app/log/php/error.log"  ]]; then 
-	mkdir -p /app/log/php
-	touch /app/log/php/error.log
-	chown npuser:nginx -R /app/*
-	chmod 770 -R /app/*
+	mkdir -p /app/log/php && touch /app/log/php/error.log
+	chown npuser:nginx -R /app/* && chmod 770 -R /app/*
 fi
+
 exec /usr/bin/php-fpm -c /etc/php/php.ini -y /etc/php/php-fpm.conf
