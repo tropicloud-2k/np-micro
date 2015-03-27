@@ -20,4 +20,4 @@ if [[  ! -d "/tmp/nginx/client-body"  ]]; then
 	chmod 775 -R /tmp/nginx/client-body
 fi
 
-exec su -l npuser -c "/usr/sbin/nginx -c /etc/nginx/nginx.conf"
+exec su -c "/usr/sbin/nginx -c /etc/nginx/nginx.conf" npuser
