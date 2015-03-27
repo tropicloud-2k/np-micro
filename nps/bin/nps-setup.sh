@@ -42,9 +42,6 @@ nps_setup() {
 	cat $nps/etc/html/index.html > $home/www/index.html
 	cat $nps/etc/html/info.php > $home/www/info.php
 	
-	ln -s $nps/etc/services/nginx /etc/services/nginx 
-	ln -s $nps/etc/services/php /etc/services/php 
-
 	# ------------------------
 	# SSL CERT.
 	# ------------------------
