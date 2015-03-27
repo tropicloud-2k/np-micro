@@ -1,5 +1,6 @@
 #!/bin/sh
 
 if [[  ! -d '/tmp/nginx/client-body'  ]]; then mkdir -p /tmp/nginx/client-body; fi
+if [[  ! -d "$home/log/nginx"  ]]; then mkdir -p $home/log/nginx; fi
 
 exec /usr/sbin/nginx -c /etc/nginx/nginx.conf
