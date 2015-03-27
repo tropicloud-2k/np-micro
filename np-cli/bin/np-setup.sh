@@ -37,7 +37,7 @@ np_setup() {
 	cat $nps/etc/html/index.html > $home/www/index.html
 	cat $nps/etc/html/info.php > $home/www/info.php
 	
-	cp -R $nps/etc/s6 /app/run
+	cp -R $nps/etc/s6/* /app/run
 	
 	# ------------------------
 	# SSL CERT.
