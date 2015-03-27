@@ -1,6 +1,7 @@
 #!/bin/sh
 
-if [[  ! -d '/var/run/php-fpm'  ]]; then mkdir -p /var/run/php-fpm; fi
-if [[  ! -d "$home/log/php"  ]]; then mkdir -p $home/log/nginx; fi
+if [[  ! -f "$home/log/php/error.log"  ]]; then 
+	su -l $user -c "mkdir -p $home/log/php && touch $home/log/php/error.log"
+fi
 
 exec /usr/bin/php-fpm -c /etc/php/php.ini -y /etc/php/php-fpm.conf
