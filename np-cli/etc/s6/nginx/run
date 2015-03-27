@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if [[  ! -f "$home/log/nginx/error.log"  ]]; then 
-	su -l $user -c "mkdir -p $home/log/nginx && touch $home/log/nginx/error.log"
+if [[  ! -f "/app/log/nginx/error.log"  ]]; then 
+	su -l $user -c "mkdir -p /app/log/nginx && touch /app/log/nginx/error.log"
 fi
-if [[  ! -d '/tmp/nginx/client-body'  ]]; then
+if [[  ! -d "/tmp/nginx/client-body"  ]]; then
 	mkdir -p /tmp/nginx/client-body
 fi
 

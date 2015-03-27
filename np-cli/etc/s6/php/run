@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [[  ! -f "$home/log/php/error.log"  ]]; then 
-	su -l $user -c "mkdir -p $home/log/php && touch $home/log/php/error.log"
+if [[  ! -f "/app/log/php/error.log"  ]]; then 
+	su -l $user -c "mkdir -p /app/log/php && touch /app/log/php/error.log"
 fi
 
 exec /usr/bin/php-fpm -c /etc/php/php.ini -y /etc/php/php-fpm.conf
