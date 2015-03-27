@@ -19,7 +19,7 @@ nps_setup() {
                 php-pgsql \
                 php-gd \
                 php-mcrypt
-	               
+
 	# ------------------------
 	# CHROOT USER
 	# ------------------------
