@@ -3,7 +3,7 @@
 # ------------------------
 
 np_start() {
-	exec /usr/bin/s6-svscan /app/run
+	exec /usr/bin/s6-svscan $home/run
 }
 
 # ------------------------

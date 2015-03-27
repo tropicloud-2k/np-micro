@@ -24,9 +24,9 @@ np_setup() {
 	# CHROOT USER
 	# ------------------------
 		
-	adduser -G nginx -h $home -D npuser
+	adduser -G nginx -h $home -D $user
 	echo "source /etc/environment" >> $home/.bashrc
-	echo "npuser    ALL=(ALL) ALL" >> /etc/sudoers
+	echo "$user    ALL=(ALL) ALL" >> /etc/sudoers
 	chown root:root $home && chmod 755 $home
 
 	mkdir -p $home/www
@@ -62,5 +62,5 @@ np_setup() {
 	# FIX PERMISSIONS
 	# ------------------------
 
-	chown npuser:nginx -R $home/* && chmod 755 -R $home/*
+	chown $user:nginx -R $home/* && chmod 755 -R $home/*
 }

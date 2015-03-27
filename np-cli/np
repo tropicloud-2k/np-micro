@@ -7,7 +7,9 @@
 # version: 0.3
 # ------------------------------------
 
-np='/usr/local/np-cli' && home='/app'
+np='/usr/local/np-cli'
+home='/app'
+user='npuser'
 
 # ------------------------------------
 # NP-STACK Functions
