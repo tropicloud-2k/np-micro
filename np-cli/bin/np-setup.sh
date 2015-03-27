@@ -6,19 +6,22 @@ np_setup() {
 	# INSTALL
 	# ------------------------
 	
-	apk-install nginx \
-	            openssl \
-	            php-fpm \
-	            php-opcache \
-	            php-mcrypt \
-	            php-curl \
-	            php-zlib \
-	            php-pdo \
-	            php-gd \
-	            php-gettext \
-	            php-mysql \
-	            php-xml \
-	            php-zip
+	apk add --update \
+	    nginx \
+	    openssl \
+	    php-fpm \
+	    php-opcache \
+	    php-mcrypt \
+	    php-curl \
+	    php-zlib \
+	    php-pdo \
+	    php-gd \
+	    php-gettext \
+	    php-mysql \
+	    php-xml \
+	    php-zip
+	                 
+	rm -rf /var/cache/apk/*
                 
 	# ------------------------
 	# CHROOT USER
