@@ -1,2 +1,5 @@
 #!/bin/sh
+
+if [[  ! -d '/var/log/php-fpm'  ]]; then mkdir -p /var/log/php-fpm; fi
+
 exec /usr/bin/php-fpm -c /etc/php.ini -y /etc/php/php-fpm.conf
