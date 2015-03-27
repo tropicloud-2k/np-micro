@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:edge
+FROM alpine
 MAINTAINER "Guigo2k" <hello@guigo.pw>
 
 ADD s6/* /
