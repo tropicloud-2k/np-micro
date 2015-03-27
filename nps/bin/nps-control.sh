@@ -40,4 +40,6 @@ nps_log() {}
 # NPS LOGIN
 # ------------------------
 
-nps_login() {}
+nps_login() {
+	exec /bin/true
+}
