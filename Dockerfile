@@ -1,11 +1,9 @@
 FROM gliderlabs/alpine:3.1
 MAINTAINER "Guigo2k" <hello@guigo.pw>
 
-ADD ska/* /
-ADD nps /usr/local/nps
-
-RUN /usr/local/nps/nps setup
+ADD root/* /
+RUN /usr/local/np-cli/np setup
 
 EXPOSE 80 443
-ENTRYPOINT ["/usr/bin/nps"]
+ENTRYPOINT ["/usr/bin/np"]
 CMD ["start"]

@@ -1,6 +1,6 @@
-nps_setup() {
+np_setup() {
 
-	chmod +x /usr/local/nps/nps && ln -s /usr/local/nps/nps /usr/bin/nps
+	chmod +x /usr/local/np-cli/np && ln -s /usr/local/np-cli/np /usr/bin/np
 
 	# ------------------------
 	# INSTALL
@@ -24,6 +24,7 @@ nps_setup() {
 
 	mkdir -p $home/www
 	mkdir -p $home/ssl
+	mkdir -p $home/run
 		
 	# ------------------------
 	# CONFIG
@@ -35,6 +36,8 @@ nps_setup() {
 
 	cat $nps/etc/html/index.html > $home/www/index.html
 	cat $nps/etc/html/info.php > $home/www/info.php
+	
+	cp -R $nps/etc/s6 /app/run
 	
 	# ------------------------
 	# SSL CERT.
