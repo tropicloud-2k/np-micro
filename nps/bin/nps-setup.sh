@@ -7,7 +7,7 @@ nps_setup() {
 	# ------------------------
 	
 	## Dependecies
-	apk-install curl openssl apk-cron
+	apk-install curl openssl
 
 	## NGINX
 	apk-install nginx
@@ -38,8 +38,12 @@ nps_setup() {
 	cat $nps/etc/nginx/default.conf > /etc/nginx/default.conf
 	cat $nps/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
 	cat $nps/etc/nginx/nginx.conf > /etc/nginx/nginx.conf
+
 	cat $nps/etc/html/index.html > $home/www/index.html
 	cat $nps/etc/html/info.php > $home/www/info.php
+	
+	ln -s $nps/etc/services/nginx /etc/services/nginx 
+	ln -s $nps/etc/services/php /etc/services/php 
 
 	# ------------------------
 	# SSL CERT.

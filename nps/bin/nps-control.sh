@@ -3,7 +3,7 @@
 # ------------------------
 
 nps_start() {
-	exec /usr/bin/s6-svscan /usr/local/nps/etc/s6
+	exec /usr/bin/s6-svscan /etc/services
 }
 
 # ------------------------
