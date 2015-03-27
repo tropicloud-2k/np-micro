@@ -1,2 +1,2 @@
 #!/bin/sh
-exec cron -f
+exec /usr/bin/php-fpm -c /etc/php.ini -y /etc/php/php-fpm.conf

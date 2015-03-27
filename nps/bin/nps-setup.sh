@@ -1,6 +1,6 @@
 nps_setup() {
 
-	chmod +x /usr/local/nps/nps && ln -s /usr/local/nps/nps /usr/bin/nps
+	chmod +x /usr/local/nps/nps-cli && ln -s /usr/local/nps/nps-cli /usr/bin/nps
 
 	# ------------------------
 	# INSTALL
