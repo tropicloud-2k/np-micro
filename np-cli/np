@@ -7,13 +7,13 @@
 # version: 0.3
 # ------------------------------------
 
-nps='/usr/local/np-cli' && home='/app'
+np='/usr/local/np-cli' && home='/app'
 
 # ------------------------------------
 # NP-STACK Functions
 # ------------------------------------
 
-for f in $nps/bin/*; do . $f; done
+for f in $np/bin/*; do . $f; done
 
   if [[  $1 == 'setup'  ]];    then np_setup $@
 elif [[  $1 == 'start'  ]];    then np_start $@

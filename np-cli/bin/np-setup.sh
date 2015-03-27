@@ -6,21 +6,28 @@ np_setup() {
 	# INSTALL
 	# ------------------------
 	
-	## NGINX
-	apk-install nginx openssl
-	               
-	## PHP
-	apk-install php-fpm \
-                php-opcache \
-                php-mysql
+	apk-install nginx \
+	            openssl \
+	            php-fpm \
+	            php-opcache \
+	            php-mcrypt \
+	            php-curl \
+	            php-zlib \
+	            php-pdo \
+	            php-gd \
+	            php-gettext \
+	            php-mysql \
+	            php-xml \
+	            php-zip
                 
 	# ------------------------
 	# CHROOT USER
 	# ------------------------
 		
-# 	useradd -g nginx -d $home -s /bin/false npstack
-# 	echo "source /etc/environment" >> $home/.bashrc
-# 	chown root:root $home && chmod 755 $home
+	adduser -G nginx -h $home -D npuser
+	echo "source /etc/environment" >> $home/.bashrc
+	echo "npuser    ALL=(ALL) ALL" >> /etc/sudoers
+	chown root:root $home && chmod 755 $home
 
 	mkdir -p $home/www
 	mkdir -p $home/ssl
@@ -30,14 +37,14 @@ np_setup() {
 	# CONFIG
 	# ------------------------
 
-	cat $nps/etc/nginx/default.conf > /etc/nginx/default.conf
-	cat $nps/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
-	cat $nps/etc/nginx/nginx.conf > /etc/nginx/nginx.conf
+	cat $np/etc/nginx/default.conf > /etc/nginx/default.conf
+	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
+	cat $np/etc/nginx/nginx.conf > /etc/nginx/nginx.conf
 
-	cat $nps/etc/html/index.html > $home/www/index.html
-	cat $nps/etc/html/info.php > $home/www/info.php
+	cat $np/etc/html/index.html > $home/www/index.html
+	cat $np/etc/html/info.php > $home/www/info.php
 	
-	cp -R $nps/etc/s6/* /app/run
+	cp -R $np/etc/s6/* /app/run
 	
 	# ------------------------
 	# SSL CERT.
@@ -45,7 +52,7 @@ np_setup() {
 	
 	cd $home/ssl
 	
-	cat $nps/etc/nginx/openssl.conf > openssl.conf
+	cat $np/etc/nginx/openssl.conf > openssl.conf
 	openssl req -nodes -sha256 -newkey rsa:2048 -keyout app.key -out app.csr -config openssl.conf -batch
 	openssl rsa -in app.key -out app.key
 	openssl x509 -req -days 365 -sha256 -in app.csr -signkey app.key -out app.crt
@@ -55,5 +62,5 @@ np_setup() {
 	# FIX PERMISSIONS
 	# ------------------------
 
-	chown nginx:nginx -R $home/* && chmod 755 -R $home/*
+	chown npuser:nginx -R $home/* && chmod 755 -R $home/*
 }

@@ -5,6 +5,8 @@ ADD s6/* /
 ADD np-cli /usr/local/np-cli
 RUN /usr/local/np-cli/np setup
 
+USER npsuer
+
 EXPOSE 80 443
 ENTRYPOINT ["/usr/bin/np"]
 CMD ["start"]
