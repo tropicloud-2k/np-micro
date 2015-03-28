@@ -30,13 +30,12 @@ np_setup() {
 	
 	adduser -D -G nginx -h $home -s /bin/sh $user
 	
-	cat >> $home/.profile <<EOF
+	cat >> $home/.profile <<"EOF"
 for var in $(cat /etc/environment); do 
 	key=$(echo $var | cut -d= -f1)
 	val=$(echo $var | cut -d= -f2)
 	export ${key}=${val}
 done
-export TERM=xterm
 EOF
 
 	mkdir -p $home/log

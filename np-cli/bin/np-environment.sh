@@ -50,15 +50,3 @@ np_environment() {
 	chown root:nginx -R /etc/env && chmod 750 -R /etc/env
 
 }
-
-user_env() {
-
-	for var in $(cat /etc/environment); do 
-		key=$(echo $var | cut -d= -f1)
-		val=$(echo $var | cut -d= -f2)
-		export ${key}=${val}
-	done
-
-	export TERM=xterm
-	exec /bin/sh
-}
