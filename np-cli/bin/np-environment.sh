@@ -48,5 +48,5 @@ np_environment() {
 	
 	chown root:nginx /etc/environment && chmod 750 /etc/environment
 	chown root:nginx -R /etc/env && chmod 750 -R /etc/env
-	
+
 }

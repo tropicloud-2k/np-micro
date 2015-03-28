@@ -29,7 +29,15 @@ np_setup() {
 	ln -s /usr/local/np-cli/np /usr/bin/np
 	
 	adduser -D -G nginx -h $home -s /bin/sh $user
-	echo "source /etc/environment" >> $home/.profile
+	
+	cat >> $home/.profile <<EOF
+for var in $(cat /etc/environment); do 
+	key=$(echo $var | cut -d= -f1)
+	val=$(echo $var | cut -d= -f2)
+	export ${key}=${val}
+done
+export TERM=xterm
+EOF
 
 	mkdir -p $home/log
 	mkdir -p $home/run
