@@ -26,17 +26,6 @@ np_environment() {
 	fi
 
 	# ------------------------
-	# PHP-FPM
-	# ------------------------
-	
-	sed -i "s|env[DB_HOST].*|env[DB_HOST] = $DB_HOST|g" /etc/php/php-fpm.conf
-	sed -i "s|env[DB_PORT].*|env[DB_PORT] = $DB_PORT|g" /etc/php/php-fpm.conf
-	sed -i "s|env[DB_NAME].*|env[DB_NAME] = $DB_NAME|g" /etc/php/php-fpm.conf
-	sed -i "s|env[DB_USER].*|env[DB_USER] = $DB_USER|g" /etc/php/php-fpm.conf
-	sed -i "s|env[DB_PASS].*|env[DB_PASS] = $DB_PASS|g" /etc/php/php-fpm.conf
-	sed -i "s|env[DATABASE_URL]|env[DATABASE_URL] = $DATABASE_URL|g" /etc/php/php-fpm.conf
-
-	# ------------------------
 	# ENV SETUP
 	# ------------------------
 
@@ -52,9 +41,22 @@ np_environment() {
 		key=$(echo $var | cut -d= -f1)
 		val=$(echo $var | cut -d= -f2)
 		echo -ne $val > /etc/env/${key}
+		echo -e "env[$key] = $val" >> /etc/php/php-fpm.conf
 	done
 	
-	chmod 644 /etc/environment
-	chmod 644 -R /etc/env
+	chown nobody:nogroup /etc/environment && chmod 644 /etc/environment
+	chown nobody:nogroup -R /etc/env && chmod 644 -R /etc/env
 	
+	# ------------------------
+	# PHP ENV
+	# ------------------------
+
+	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
+
+	for var in $(cat /etc/environment); do 
+		key=$(echo $var | cut -d= -f1)
+		val=$(echo $var | cut -d= -f2)
+		echo -e "env[$key] = $val" >> /etc/php/php-fpm.conf
+	done
+
 }
