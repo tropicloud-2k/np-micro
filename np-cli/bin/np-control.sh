@@ -45,7 +45,7 @@ np_login() {
 
 	if [[  $@ == *'root'*  ]];
 	then /bin/sh
-	else su -l $user
+	else su -l $user -c user_env
 	fi
 	
 }
