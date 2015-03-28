@@ -5,6 +5,7 @@ np_setup() {
 	# ------------------------
 	
 	apk add --update \
+	    mysql-client \
 	    nginx \
 	    openssl \
 	    php-curl \
@@ -12,7 +13,6 @@ np_setup() {
 	    php-ftp \
 	    php-gd \
 	    php-gettext \
-	    php-mbstring \
 	    php-mcrypt \
 	    php-mysql \
 	    php-opcache \
