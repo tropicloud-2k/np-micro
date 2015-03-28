@@ -37,26 +37,16 @@ np_environment() {
 	else mkdir -p /etc/env
 	fi
 
-	for var in $(cat /etc/environment); do 
-		key=$(echo $var | cut -d= -f1)
-		val=$(echo $var | cut -d= -f2)
-		echo -ne $val > /etc/env/${key}
-		echo -e "env[$key] = \"$val\"" >> /etc/php/php-fpm.conf
-	done
-	
-	chown nobody:nogroup /etc/environment && chmod 644 /etc/environment
-	chown nobody:nogroup -R /etc/env && chmod 644 -R /etc/env
-	
-	# ------------------------
-	# PHP ENV
-	# ------------------------
-
 	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
 
 	for var in $(cat /etc/environment); do 
 		key=$(echo $var | cut -d= -f1)
 		val=$(echo $var | cut -d= -f2)
-		echo -e "env[$key] = $val" >> /etc/php/php-fpm.conf
+		echo -ne $val > /etc/env/${key}
+		echo -e "env[$key] = '$val'" >> /etc/php/php-fpm.conf
 	done
-
+	
+	chown nobody:nogroup /etc/environment && chmod 644 /etc/environment
+	chown nobody:nogroup -R /etc/env && chmod 644 -R /etc/env
+	
 }
