@@ -29,9 +29,9 @@ np_setup() {
 	ln -s /usr/local/np-cli/np /usr/bin/np
 	
 	adduser -D -G nginx -h $home -s /bin/sh $user
-	echo "source /etc/environment" >> $home/.bashrc
+	echo "source /etc/environment" >> $home/.profile
 	echo "$user    ALL=(ALL) ALL" >> /etc/sudoers
-# 	chown root:root $home && chmod 755 $home
+ 	chown root:root $home && chmod 755 $home
 
 	mkdir -p $home/log
 	mkdir -p $home/run

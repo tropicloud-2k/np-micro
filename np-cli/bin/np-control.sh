@@ -43,7 +43,7 @@ np_log() {}
 
 np_login() {
 
-	if [[  $@ == *'--root'*  ]];
+	if [[  $@ == *'root'*  ]];
 	then /bin/sh
 	else su -l $user
 	fi
