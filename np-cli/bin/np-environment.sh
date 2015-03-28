@@ -41,7 +41,7 @@ np_environment() {
 		key=$(echo $var | cut -d= -f1)
 		val=$(echo $var | cut -d= -f2)
 		echo -ne $val > /etc/env/${key}
-		echo -e "env[$key] = $val" >> /etc/php/php-fpm.conf
+		echo -e "env[$key] = \"$val\"" >> /etc/php/php-fpm.conf
 	done
 	
 	chown nobody:nogroup /etc/environment && chmod 644 /etc/environment
