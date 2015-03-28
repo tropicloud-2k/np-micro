@@ -5,7 +5,6 @@ np_setup() {
 	# ------------------------
 	
 	apk add --update \
-	    mysql-client \
 	    nginx \
 	    openssl \
 	    php-curl \
@@ -16,10 +15,10 @@ np_setup() {
 	    php-mcrypt \
 	    php-mysql \
 	    php-opcache \
-	    php-pdo \
-	    php-pdo_pgsql \
-	    php-pdo_sqlite \
-	    php-pdo_mysql \
+ 	    php-pdo \
+# 	    php-pdo_pgsql \
+# 	    php-pdo_sqlite \
+# 	    php-pdo_mysql \
 	    php-xml \
 	    php-zlib \
 	    php-zip
