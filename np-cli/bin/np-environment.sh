@@ -46,7 +46,7 @@ np_environment() {
 		echo -e "env[$key] = '$val'" >> /etc/php/php-fpm.conf
 	done
 	
-	chown nobody:nogroup /etc/environment && chmod 644 /etc/environment
-	chown nobody:nogroup -R /etc/env && chmod 644 -R /etc/env
+	chown root:nginx /etc/environment && chmod 750 /etc/environment
+	chown root:nginx -R /etc/env && chmod 750 -R /etc/env
 	
 }

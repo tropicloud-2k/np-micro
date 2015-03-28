@@ -43,9 +43,9 @@ np_log() {}
 
 np_login() {
 
-	if [[  ! -z $2 && $2 == 'root'  ]];
+	if [[  $@ == *'--root'*  ]];
 	then /bin/sh
-	else su -l $user -s /bin/sh
+	else su -l $user
 	fi
 	
 }
