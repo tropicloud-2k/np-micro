@@ -30,8 +30,6 @@ np_setup() {
 	
 	adduser -D -G nginx -h $home -s /bin/sh $user
 	echo "source /etc/environment" >> $home/.profile
-	echo "$user    ALL=(ALL) ALL" >> /etc/sudoers
- 	chown root:root $home && chmod 755 $home
 
 	mkdir -p $home/log
 	mkdir -p $home/run
@@ -63,6 +61,6 @@ np_setup() {
 	# CHMOD
 	# ------------------------
 
-	chown $user:nginx -R $home/*
-	chmod 770 -R $home/*
+	chown $user:nginx -R $home
+	chmod 770 -R $home
 }
