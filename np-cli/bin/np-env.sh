@@ -1,4 +1,4 @@
-np_environment() {
+np_env() {
 	
 	# ------------------------
 	# DATABASE URL

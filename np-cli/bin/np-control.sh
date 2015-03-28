@@ -4,7 +4,7 @@
 
 np_start() {
 
-	np_environment && exec /usr/bin/s6-svscan $home/run
+	np_env && exec /usr/bin/s6-svscan $home/run
 }
 
 # ------------------------
@@ -43,9 +43,6 @@ np_log() {}
 
 np_login() {
 
-	if [[  $@ == *'root'*  ]];
-	then /bin/sh
-	else su -l $user
-	fi
+	su -l $user
 	
 }
