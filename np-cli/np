@@ -26,8 +26,6 @@ elif [[  $1 == 'status'  ]];   then np_status $@
 elif [[  $1 == 'log'  ]];      then np_log $@
 elif [[  $1 == 'login'  ]];    then np_login $@
 
-elif [[  $1 == 'login' && $2 == 'root' ]]; then /bin/sh
-
 # ------------------------------------
 # NP-CLI commands
 # ------------------------------------

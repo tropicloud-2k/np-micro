@@ -2,10 +2,7 @@
 # NP START
 # ------------------------
 
-np_start() {
-
-	np_env && exec /usr/bin/s6-svscan $home/run
-}
+np_start() { np_env && exec /usr/bin/s6-svscan $home/run; }
 
 # ------------------------
 # NP STOP
@@ -41,8 +38,10 @@ np_log() {}
 # NP LOGIN
 # ------------------------
 
-np_login() {
+np_login() { su -l $user; }
 
-	su -l $user
-	
-}
+# ------------------------
+# NP ROOT
+# ------------------------
+
+np_root() { /bin/sh; }

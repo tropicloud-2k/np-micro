@@ -7,16 +7,21 @@ np_setup() {
 	apk add --update \
 	    nginx \
 	    openssl \
-	    php-fpm \
-	    php-opcache \
-	    php-mcrypt \
 	    php-curl \
-	    php-zlib \
-	    php-pdo \
+	    php-fpm \
+	    php-ftp \
 	    php-gd \
 	    php-gettext \
+	    php-mbstring \
+	    php-mcrypt \
 	    php-mysql \
+	    php-opcache \
+	    php-pdo \
+	    php-pdo_pgsql \
+	    php-pdo_sqlite \
+	    php-pdo_mysql \
 	    php-xml \
+	    php-zlib \
 	    php-zip
 	                 
 	rm -rf /var/cache/apk/*
@@ -24,9 +29,6 @@ np_setup() {
 	# ------------------------
 	# CONFIG
 	# ------------------------
-		
-	chmod +x /usr/local/np-cli/np
-	ln -s /usr/local/np-cli/np /usr/bin/np
 	
 	adduser -D -G nginx -h $home -s /bin/sh $user
 	
@@ -58,6 +60,7 @@ EOF
 	cd $home/ssl
 	
 	cat $np/etc/nginx/openssl.conf > openssl.conf
+	
 	openssl req -nodes -sha256 -newkey rsa:2048 -keyout app.key -out app.csr -config openssl.conf -batch
 	openssl rsa -in app.key -out app.key
 	openssl x509 -req -days 365 -sha256 -in app.csr -signkey app.key -out app.crt
@@ -67,6 +70,9 @@ EOF
 	# ------------------------
 	# CHMOD
 	# ------------------------
+
+	chmod +x /usr/local/np-cli/np
+	ln -s /usr/local/np-cli/np /usr/bin/np
 
 	chown $user:nginx -R $home
 	chmod 770 -R $home
