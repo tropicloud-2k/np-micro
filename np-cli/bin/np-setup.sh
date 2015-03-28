@@ -13,8 +13,11 @@ np_setup() {
 	    php-gd \
 	    php-gettext \
 	    php-mcrypt \
+	    php-memcache \
 	    php-mysql \
 	    php-opcache \
+	    php-phar \
+	    php-pear \
  	    php-pdo \
 # 	    php-pdo_pgsql \
 # 	    php-pdo_sqlite \
