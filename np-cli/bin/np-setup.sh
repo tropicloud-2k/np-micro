@@ -7,6 +7,7 @@ np_setup() {
 	apk add --update \
 	    nginx \
 	    openssl \
+	    php-bz2 \
 	    php-curl \
 	    php-fpm \
 	    php-ftp \
@@ -16,15 +17,17 @@ np_setup() {
 	    php-memcache \
 	    php-mysql \
 	    php-opcache \
+	    php-openssl \
 	    php-phar \
 	    php-pear \
  	    php-pdo \
-# 	    php-pdo_pgsql \
-# 	    php-pdo_sqlite \
-# 	    php-pdo_mysql \
+ 	    php-pdo_pgsql \
+ 	    php-pdo_sqlite \
+ 	    php-pdo_mysql \
 	    php-xml \
 	    php-zlib \
-	    php-zip
+	    php-zip \
+	    nano curl wget
 	                 
 	rm -rf /var/cache/apk/*
                 
@@ -48,6 +51,7 @@ EOF
 	mkdir -p $home/www
 		
 	cp -R $np/etc/s6/* /app/run
+	cp $home/.profile /root/.profile
 
 	cat $np/etc/html/index.html > $home/www/index.html
 	cat $np/etc/html/info.php > $home/www/info.php
@@ -77,5 +81,5 @@ EOF
 	ln -s /usr/local/np-cli/np /usr/bin/np
 
 	chown $user:nginx -R $home
-	chmod 770 -R $home
+	chmod 775 -R $home
 }
