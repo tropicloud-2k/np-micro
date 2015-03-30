@@ -14,13 +14,13 @@ np_stop() {}
 # NP RESTART
 # ------------------------
 
-np_restart() {}
+np_restart() { np_env && exec /usr/bin/s6-svc -t $home/run/$2; }
 
 # ------------------------
 # NP RELOAD
 # ------------------------
 
-np_reload() {}
+np_reload() { np_env && exec /usr/bin/s6-svc -h $home/run/$2; }
 
 # ------------------------
 # NP STATUS

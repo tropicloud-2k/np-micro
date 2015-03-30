@@ -5,6 +5,7 @@ np_setup() {
 	# ------------------------
 	
 	apk add --update \
+	    mysql-client \
 	    nginx \
 	    openssl \
 	    php-bz2 \
@@ -31,6 +32,14 @@ np_setup() {
 	                 
 	rm -rf /var/cache/apk/*
                 
+	## WP-CLI
+	wget -nv -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+	chmod +x /usr/local/bin/wp
+	
+	## JQ 
+	wget -nv -O /usr/local/bin/jq http://stedolan.github.io/jq/download/linux64/jq
+	chmod +x /usr/local/bin/jq
+	
 	# ------------------------
 	# CONFIG
 	# ------------------------
@@ -54,9 +63,9 @@ EOF
 	cp $home/.profile /root/.profile
 
 	cat $np/etc/html/index.html > $home/www/index.html
-	cat $np/etc/html/info.php > $home/www/info.php
+	cat $np/etc/html/info.php > $home/www/info.php	
 	cat $np/etc/nginx/nginx.conf > /etc/nginx/nginx.conf
-	cat $np/etc/nginx/default.conf > /etc/nginx/default.conf
+	cat $np/etc/nginx/default.conf > /etc/default.conf
 	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
 	
 	# ------------------------
