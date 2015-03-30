@@ -61,13 +61,15 @@ EOF
 		
 	cp -R $np/etc/s6/* /app/run
 	cp $home/.profile /root/.profile
-
+	
 	cat $np/etc/html/index.html > $home/www/index.html
 	cat $np/etc/html/info.php > $home/www/info.php	
-	cat $np/etc/nginx/nginx.conf > /etc/nginx/nginx.conf
-	cat $np/etc/nginx/default.conf > /etc/nginx/default.conf
 	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
 	
+	for file in $(ls $np/etc/nginx); do cat $np/etc/nginx/$file > /etc/nginx/$file; done
+
+	ls -s /etc/nginx/default.conf /app/app.conf
+		
 	# ------------------------
 	# SSL
 	# ------------------------
