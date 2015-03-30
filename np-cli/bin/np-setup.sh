@@ -65,7 +65,7 @@ EOF
 	cat $np/etc/html/index.html > $home/www/index.html
 	cat $np/etc/html/info.php > $home/www/info.php	
 	cat $np/etc/nginx/nginx.conf > /etc/nginx/nginx.conf
-	cat $np/etc/nginx/default.conf > /etc/default.conf
+	cat $np/etc/nginx/default.conf > /etc/nginx/default.conf
 	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
 	
 	# ------------------------
