@@ -67,8 +67,7 @@ EOF
 	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
 	
 	for file in $(ls $np/etc/nginx); do cat $np/etc/nginx/$file > /etc/nginx/$file; done
-
-	ls -s /etc/nginx/default.conf /app/app.conf
+	ln -s /etc/nginx/default.conf /app/app.conf
 		
 	# ------------------------
 	# SSL
