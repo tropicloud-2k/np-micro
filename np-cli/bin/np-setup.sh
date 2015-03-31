@@ -32,11 +32,11 @@ np_setup() {
 	                 
 	rm -rf /var/cache/apk/*
                 
-	## WP-CLI
+	# WP-CLI
 	wget -nv -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 	chmod +x /usr/local/bin/wp
 	
-	## JQ 
+	# JQ 
 	wget -nv -O /usr/local/bin/jq http://stedolan.github.io/jq/download/linux64/jq
 	chmod +x /usr/local/bin/jq
 	
@@ -62,13 +62,16 @@ EOF
 	cp -R $np/etc/s6/* /app/run
 	cp $home/.profile /root/.profile
 	
-	cat $np/etc/html/index.html > $home/www/index.html
-	cat $np/etc/html/info.php > $home/www/info.php	
-	cat $np/etc/php/php-fpm.conf > /etc/php/php-fpm.conf
+	cat $np/etc/html/info.php          > $home/www/info.php	
+	cat $np/etc/html/index.html        > $home/www/index.html
+	cat $np/etc/nginx/nginx.conf       > /etc/nginx/nginx.conf
+	cat $np/etc/nginx/default.conf     > /etc/nginx/default.conf
+	cat $np/etc/nginx/block.conf       > /etc/nginx/block.conf
+	cat $np/etc/nginx/drop.conf        > /etc/nginx/drop.conf
+	cat $np/etc/nginx/errorpages.conf  > /etc/nginx/errorpages.conf
+	cat $np/etc/nginx/staticfiles.conf > /etc/nginx/staticfiles.conf	
+	cat $np/etc/php/php-fpm.conf       > /etc/php/php-fpm.conf
 	
-	for file in $(ls $np/etc/nginx); do cat $np/etc/nginx/$file > /etc/nginx/$file; done
-	ln -s /etc/nginx/default.conf /app/app.conf
-		
 	# ------------------------
 	# SSL
 	# ------------------------
@@ -77,9 +80,9 @@ EOF
 	
 	cat $np/etc/nginx/openssl.conf > openssl.conf
 	
-	openssl req -nodes -sha256 -newkey rsa:2048 -keyout app.key -out app.csr -config openssl.conf -batch
-	openssl rsa -in app.key -out app.key
-	openssl x509 -req -days 365 -sha256 -in app.csr -signkey app.key -out app.crt
+	openssl req -quiet -nodes -sha256 -newkey rsa:2048 -keyout app.key -out app.csr -config openssl.conf -batch
+	openssl rsa -quiet -in app.key -out app.key
+	openssl x509 -quiet -req -days 365 -sha256 -in app.csr -signkey app.key -out app.crt
 	
 	rm -f openssl.conf
 	
