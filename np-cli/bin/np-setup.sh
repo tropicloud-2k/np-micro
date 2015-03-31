@@ -87,9 +87,6 @@ EOF
 	# CHMOD
 	# ------------------------
 
-	chmod +x /usr/local/np-cli/np
-	ln -s /usr/local/np-cli/np /usr/bin/np
-
-	chown $user:nginx -R $home
-	chmod 775 -R $home
+	chmod +x $np/np && ln -s $np/np /usr/bin/np
+	chown $user:nginx -R $home && chmod 775 -R $home
 }
