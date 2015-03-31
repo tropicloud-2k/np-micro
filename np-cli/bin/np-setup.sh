@@ -31,14 +31,14 @@ np_setup() {
 	    nano curl wget
 	                 
 	rm -rf /var/cache/apk/*
-                
-	# WP-CLI
-	wget -nv -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-	chmod +x /usr/local/bin/wp
 	
 	# JQ 
 	wget -nv -O /usr/local/bin/jq http://stedolan.github.io/jq/download/linux64/jq
 	chmod +x /usr/local/bin/jq
+	
+	# WP-CLI
+	wget -nv -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+	chmod +x /usr/local/bin/wp
 	
 	# ------------------------
 	# CONFIG
@@ -80,14 +80,14 @@ EOF
 	
 	cat $np/etc/nginx/openssl.conf > openssl.conf
 	
-	openssl req -quiet -nodes -sha256 -newkey rsa:2048 -keyout app.key -out app.csr -config openssl.conf -batch
-	openssl rsa -quiet -in app.key -out app.key
-	openssl x509 -quiet -req -days 365 -sha256 -in app.csr -signkey app.key -out app.crt
+	openssl req -nodes -sha256 -newkey rsa:2048 -keyout app.key -out app.csr -config openssl.conf -batch
+	openssl rsa -in app.key -out app.key
+	openssl x509 -req -days 365 -sha256 -in app.csr -signkey app.key -out app.crt
 	
 	rm -f openssl.conf
 	
 	# ------------------------
-	# CHMOD
+	# PERMISSIONS
 	# ------------------------
 
 	chmod +x $np/np && ln -s $np/np /usr/bin/np
