@@ -1,7 +1,7 @@
 get_wp_domain() {
 	echo -ne "\033[0;34m  Domain Name: \n\n"
 	echo -ne "\033[1;37m  http://"
-	read WP_DOMAIN & echo ""
+	read WP_DOMAIN && echo ""
 }
 
 get_wp_mail() {
