@@ -7,6 +7,10 @@
 # version: 0.4
 # ------------------------------------
 
+  np='/usr/local/np-cli'
+user='np-user'
+home='/app'
+
 for f in $np/bin/*; do . $f; done
 
   if [[  $1 == 'setup'  ]];    then np_setup $@
@@ -21,7 +25,7 @@ elif [[  $1 == 'root'  ]];     then np_root $@
 
 else echo "
 ----------------------------------------------------
-  NP-STACK  - www.tropicloud.net
+  NP-MICRO  - www.tropicloud.net
 ----------------------------------------------------  
 
   HOW TO USE:

@@ -5,10 +5,6 @@ ADD s6/* /
 ADD np-cli /usr/local/np-cli
 RUN /usr/local/np-cli/np setup
 
-ENV home="/app" \
-    user="npuser" \
-    np="/usr/local/np-cli"
-    
 VOLUME /app
 EXPOSE 80 443
 ENTRYPOINT ["np","start"]
