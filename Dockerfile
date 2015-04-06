@@ -7,5 +7,5 @@ RUN /usr/local/np-cli/np setup
 
 VOLUME /app
 EXPOSE 80 443
-ENTRYPOINT ["np","start"]
-CMD []
+ENTRYPOINT ["np"]
+CMD ["start"]
