@@ -1,18 +1,10 @@
 #!/bin/sh
 
 # ------------------------------------
-# Tropicloud NP-STACK
+# Tropicloud's NP-MICRO
 # ------------------------------------
-# @author: Guigo2k (hello@guigo.pw)
-# version: 0.3
-# ------------------------------------
-
-np='/usr/local/np-cli'
-home='/app'
-user='npuser'
-
-# ------------------------------------
-# NP-CLI functions
+# @author: Guigo2k <hello@guigo.pw>
+# version: 0.4
 # ------------------------------------
 
 for f in $np/bin/*; do . $f; done
@@ -26,10 +18,6 @@ elif [[  $1 == 'status'  ]];   then np_status $@
 elif [[  $1 == 'log'  ]];      then np_log $@
 elif [[  $1 == 'login'  ]];    then np_login $@
 elif [[  $1 == 'root'  ]];     then np_root $@
-
-# ------------------------------------
-# NP-CLI commands
-# ------------------------------------
 
 else echo "
 ----------------------------------------------------
