@@ -27,28 +27,28 @@ get_wp_ssl() {
 wp_install() {
 
 	if [[  $@ == *' -d'*  ]];
-	then WP_DOMAIN=$( echo $@ | grep -o '\-d.*' | awk '{print $2}' );
-	else get_wp_domain;
+	then WP_DOMAIN=$( echo $@ | grep -o '\-d.*' | awk '{print $2}' )
+	else get_wp_domain
 	fi
 	
 	if [[  $@ == *' -u'*  ]];
-	then WP_USER=$( echo $@ | grep -o '\-u.*' | awk '{print $2}' );
-	else get_wp_user;
+	then WP_USER=$( echo $@ | grep -o '\-u.*' | awk '{print $2}' )
+	else get_wp_user
 	fi
 	
 	if [[  $@ == *' -p'*  ]];
-	then WP_PASS=$( echo $@ | grep -o '\-u.*' | awk '{print $2}' );
-	else get_wp_pass;
+	then WP_PASS=$( echo $@ | grep -o '\-u.*' | awk '{print $2}' )
+	else get_wp_pass
 	fi
 	
 	if [[  $@ == *' -m'*  ]];
-	then WP_MAIL=$( echo $@ | grep -o '\-m.*' | awk '{print $2}' );
-	else get_wp_mail;
+	then WP_MAIL=$( echo $@ | grep -o '\-m.*' | awk '{print $2}' )
+	else get_wp_mail
 	fi
 	
 	if [[  $@ == *'--ssl'*  ]];
-	then SSL='true';
-	else get_wp_ssl;
+	then SSL='true'
+	else get_wp_ssl
 	fi
 	
 	# ------------------------
