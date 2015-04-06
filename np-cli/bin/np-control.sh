@@ -8,7 +8,7 @@ np_start() { np_env && exec /usr/bin/s6-svscan $home/run; }
 # NP STOP
 # ------------------------
 
-np_stop() {}
+np_stop() { exec /usr/bin/s6-svscanctl -st $home/run; }
 
 # ------------------------
 # NP RESTART
@@ -45,3 +45,9 @@ np_login() { su -l $user; }
 # ------------------------
 
 np_root() { /bin/sh; }
+
+# ------------------------
+# NP HALT
+# ------------------------
+
+np_halt() { exec /usr/bin/s6-svscanctl -st $home/run; }

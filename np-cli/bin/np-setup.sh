@@ -28,17 +28,9 @@ np_setup() {
 	    php-xml \
 	    php-zlib \
 	    php-zip \
-	    nano curl wget
+	    nano curl
 	                 
 	rm -rf /var/cache/apk/*
-	
-	# JQ 
-	wget -nv -O /usr/local/bin/jq http://stedolan.github.io/jq/download/linux64/jq
-	chmod +x /usr/local/bin/jq
-	
-	# WP-CLI
-	wget -nv -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-	chmod +x /usr/local/bin/wp
 	
 	# ------------------------
 	# CONFIG

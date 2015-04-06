@@ -22,6 +22,9 @@ elif [[  $1 == 'status'  ]];   then np_status $@
 elif [[  $1 == 'log'  ]];      then np_log $@
 elif [[  $1 == 'login'  ]];    then np_login $@
 elif [[  $1 == 'root'  ]];     then np_root $@
+elif [[  $1 == 'halt'  ]];     then np_halt $@
+
+elif [[  $1 == 'wp' && $2 == 'install'  ]]; then wp_install $@
 
 else echo "
 ----------------------------------------------------
