@@ -62,7 +62,7 @@ wp_install() {
 	# SSL CERT.
 	# ------------------------
 
-	cd $home/ssl
+	cd $home/ssl && rm -rf $(ls)
 	
 	cat $np/etc/nginx/openssl.conf | sed "s/localhost/$WP_DOMAIN/g" > openssl.conf
 
